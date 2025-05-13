@@ -17,7 +17,7 @@ body {
   background: #eee;
   margin: 0;
   padding: 0;
-  overflow: hidden; /* évite les scrolls pendant l'animation */
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -39,6 +39,71 @@ body {
   z-index: 99999;
 }
 
+.content-1 {
+  opacity: 100%;
+  animation: text 15s infinite linear;
+}
+
+@keyframes changeText1 {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.content-2 {
+  opacity: 0%;
+  animation: text 15s 5s infinite linear;
+}
+
+@keyframes changeText2 {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+.content-3 {
+  opacity: 0%;
+  animation: text 15s infinite linear;
+  animation-delay: 10s;
+}
+
+@keyframes changeText3 {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 100%;
+  }
+}
+
+@keyframes text {
+  0% {
+    opacity: 0%;
+  }
+
+  6.6% {
+    opacity: 100%;
+  }
+
+  33.3% {
+    opacity: 100%;
+  }
+
+  40% {
+    opacity: 0%;
+  }
+
+  100% {
+    opacity: 0%;
+  }
+}
+
 .circle {
   position: fixed;
   top: 50%;
@@ -52,40 +117,48 @@ body {
 
 .circle-1 {
   background-color: #ec5b2a;
-  animation: expand 8s linear;
+  animation: expand 15s infinite linear;
   filter: blur(4px);
 }
 
 .circle-2 {
   background-color: #f3aefa;
-  animation: expand 8s linear;
+  animation: expand 15s infinite linear;
   animation-delay: 5s;
   opacity: 0;
   animation-fill-mode: forwards;
   filter: blur(4px);
 }
 
-.circle-overlay {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  width: 100px;
-  height: 100px;
-  background-color: #ec5b2a;
-  border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0); /* centre et rétrécit */
-  animation: expandCircle 8s linear;
-  z-index: 1;
+.circle-3 {
+  background-color: #99f881;
+  animation: expand 15s infinite linear;
+  animation-delay: 10s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  filter: blur(4px);
 }
 
-/* Animation d’agrandissement */
 @keyframes expand {
   0% {
     transform: translate(-50%, -50%) scale(0);
     opacity: 1;
+    z-index: 1;
   }
+
+  33% {
+    transform: translate(-50%, -50%) scale(50);
+    opacity: 1;
+    z-index: 1;
+  }
+
+  33.1% {
+    z-index: 0;
+  }
+
   100% {
     transform: translate(-50%, -50%) scale(50);
     opacity: 1;
+    z-index: 0;
   }
 }

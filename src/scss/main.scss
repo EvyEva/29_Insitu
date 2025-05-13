@@ -126,7 +126,6 @@ body {
   animation: expand 15s infinite linear;
   animation-delay: 5s;
   opacity: 0;
-  animation-fill-mode: forwards;
   filter: blur(4px);
 }
 
@@ -135,7 +134,6 @@ body {
   animation: expand 15s infinite linear;
   animation-delay: 10s;
   opacity: 0;
-  animation-fill-mode: forwards;
   filter: blur(4px);
 }
 
@@ -143,16 +141,24 @@ body {
   0% {
     transform: translate(-50%, -50%) scale(0);
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
   }
 
   33% {
     transform: translate(-50%, -50%) scale(50);
     opacity: 1;
-    z-index: 1;
+    z-index: 2;
   }
 
   33.1% {
+    z-index: 1;
+  }
+
+  66% {
+    z-index: 1;
+  }
+
+  66.1% {
     z-index: 0;
   }
 

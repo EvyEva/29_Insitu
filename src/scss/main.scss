@@ -15,6 +15,10 @@ video {
 
 body {
   background: #eee;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* évite les scrolls pendant l'animation */
+  height: 100vh;
 }
 
 .screen {
@@ -22,4 +26,66 @@ body {
   height: 1920px;
   margin: 0 auto;
   background: #fff;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.circle {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  z-index: 1;
+}
+
+.circle-1 {
+  background-color: #ec5b2a;
+  animation: expand 8s linear;
+  filter: blur(4px);
+}
+
+.circle-2 {
+  background-color: #f3aefa;
+  animation: expand 8s linear;
+  animation-delay: 5s;
+  opacity: 0;
+  animation-fill-mode: forwards;
+  filter: blur(4px);
+}
+
+.circle-overlay {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100px;
+  height: 100px;
+  background-color: #ec5b2a;
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0); /* centre et rétrécit */
+  animation: expandCircle 8s linear;
+  z-index: 1;
+}
+
+/* Animation d’agrandissement */
+@keyframes expand {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(50);
+    opacity: 1;
+  }
 }

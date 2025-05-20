@@ -17,31 +17,225 @@ body {
   background: #eee;
   margin: 0;
   padding: 0;
-  overflow: hidden;
-  height: 100vh;
+  color: #000;
 }
+
+@font-face {
+  font-family: "CalvinoGrandeItalicVarTrial";
+  src: url("./font/CalvinoGrandeItalicVarTrial.woff2") format("woff2"),
+    url("./font/CalvinoGrandeItalicVarTrial.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+@font-face {
+  font-family: "SuisseIntl-Regular";
+  src: url("./font/SuisseIntl-Regular.woff2") format("woff2"),
+    url("./font/SuisseIntl-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: fallback;
+}
+
+// Content
 
 .screen {
   width: 1080px;
   height: 1920px;
   margin: 0 auto;
   background: #fff;
+  position: relative;
+  overflow: hidden;
 }
 
 h1 {
   font-family: "CalvinoGrandeItalicVarTrial";
   font-size: 140px;
+  font-style: italic;
+  line-height: 78%;
+  margin-bottom: 50px;
+}
+
+.language-content {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  top: 80px;
+  right: 71px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  font-weight: 600;
+}
+
+.language {
+  font-family: "Suisse Intl";
+  font-size: 40px;
+  line-height: 150%;
+  letter-spacing: -0.44px;
+  cursor: pointer;
+  padding-bottom: 5px;
+  display: inline-block;
+  position: relative;
+}
+
+.language::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 3px;
+  background-color: black;
+  transition: width 0.3s ease;
+}
+
+.language.active::after {
+  width: 100%;
 }
 
 .content {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 519px;
   left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+  flex-direction: column;
+  text-align: center;
+}
+
+.date {
+  text-align: center;
+  font-family: "SuisseIntl-Regular";
+  font-size: 48px;
+  line-height: 150%;
+  letter-spacing: -0.528px;
+}
+
+.line {
+  height: 3px;
+  background: var(--noir, #000);
+  margin-bottom: 5px;
+}
+
+.name-place {
+  text-align: center;
+  font-family: "Suisse Intl";
+  font-size: 40px;
+  line-height: 150%;
+  letter-spacing: -0.44px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  margin-bottom: 50px;
+}
+
+.infos-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 31px;
+  align-self: stretch;
+}
+
+.location-content {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.location {
+  text-align: center;
+  font-family: "Suisse Intl";
+  font-size: 40px;
+  line-height: 150%;
+  letter-spacing: -0.44px;
+}
+
+.button {
+  display: flex;
+  padding: 20px;
+  align-items: center;
+  gap: 40px;
+  border-radius: 100px;
+  border: 2px solid var(--noir, #000);
+  font-family: "Suisse Intl";
+  font-size: 30px;
+  line-height: 150%;
+  letter-spacing: -0.33px;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+}
+
+.button1 {
+  background: var(--orange-rouge, #ff4d00);
+}
+
+.button2 {
+  background: var(--rose, #faf);
+}
+
+.button3 {
+  background: var(--vert-fluo, #75fb70);
+}
+
+.logo {
+  color: var(--noir, #000);
+  text-align: center;
+  font-family: "Suisse Intl";
+  font-size: 40px;
+  letter-spacing: -0.44px;
+}
+
+.logo {
+  position: absolute;
+  top: 90%;
+  left: 22%;
   transform: translate(-50%, -50%);
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 99999;
+}
+
+.finger {
+  position: absolute;
+  z-index: 99999;
+  bottom: 464px;
+  left: 50%;
+}
+
+.finger {
+  opacity: 0%;
+  animation: click 3s 4s infinite linear;
+}
+
+//Animation
+
+@keyframes click {
+  0% {
+    opacity: 0%;
+  }
+  50% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
 }
 
 .content-1 {
@@ -109,9 +303,11 @@ h1 {
   }
 }
 
+// Circle
+
 .circle {
-  position: fixed;
-  top: 50%;
+  position: absolute;
+  top: 35%;
   left: 50%;
   width: 100px;
   height: 100px;
